@@ -1,0 +1,5 @@
+<%= form_with model: @todo, local: true do |f| %>
+<%= f.label :description, "Descripción del ToDo", class: 't-white' %>
+<%= f.text_field :description, class: 'text-field' %>
+<%= f.submit "Crear", class: 'btn btn-success'%>
+<% end %>

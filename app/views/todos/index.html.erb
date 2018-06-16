@@ -1,0 +1,38 @@
+<div class="row m-0 p-0">
+  <div class="col-md-12 text-center pt-5 header">
+    <h1>Lista de To Dos</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= link_to "Agregar To Do", todos_new_path, class: 'btn btn-light btn-lg' %>
+  </div>
+</div>
+<div class="row m-0 p-5">
+  <div class="col-md-6">
+    <h1 class="m-3 title">To Dos por realizar</h1>
+    <% @todos.each do |todo| %>
+    <% if todo.completed == false %>
+    <div class="box p-3 m-3">
+      <h2><%= link_to todo.description, todo %></h2>
+      <%= link_to "Editar", edit_todo_path(todo), class: 'btn btn-outline-success btn-sm' %>
+      <%= link_to "Borrar", todo, method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+      <%= link_to "Completado?", complete_todo_path(todo), class: 'btn btn-light btn-sm' %>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h1 class="m-3 title">To Dos realizados</h1>
+    <% @todos.each do |todo| %>
+    <% if todo.completed == true %>
+    <div class="box-completed p-3 m-3">
+      <h2><%= link_to todo.description, todo %></h2>
+      <%= link_to "Borrar", todo, method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+      <%= link_to "Editar", edit_todo_path(todo), class: 'btn btn-outline-success btn-sm' %>
+      <p>Completado</p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
